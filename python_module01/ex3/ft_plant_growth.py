@@ -11,6 +11,7 @@ def show(plant) -> str:
         f"{plant.age} days old"
     )
 
+
 def create(plant) -> None:
     print(f"Created: {show(plant)}")
 
