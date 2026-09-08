@@ -2,7 +2,7 @@ def recursive_harvest(number, harvest_days) -> None:
     if number > harvest_days:
         print("Harvest time!")
     else:
-        print("Day ", number)
+        print("Day", number)
         recursive_harvest(number + 1, harvest_days)
 
 
