@@ -10,12 +10,11 @@ class Plant:
     def age(self):
         self.age_days += 1
 
-
-def show(plant) -> None:
-    print(
-        f"{plant.name}: {round(plant.height, 2)} cm, "
-        f"{plant.age_days} days old"
-    )
+    def show(self) -> None:
+        print(
+            f"{self.name}: {round(self.height, 2)} cm, "
+            f"{self.age_days} days old"
+        )
 
 
 def ft_plant_growth(plant) -> None:
