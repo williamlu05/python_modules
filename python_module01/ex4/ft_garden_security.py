@@ -1,20 +1,20 @@
 #!/usr/bin/env python3
 class Plant:
     def __init__(self, name, height, age):
-        self.name = name
+        self._name = name
         self._height = height
         if height < 0:
             print("Error: Height cannot be negative")
             self._height = 0.0
-        self._day = day
-        if day < 0:
+        self._age = age
+        if age < 0:
             print("Error: Age cannot be negative")
-            self._day = 0
+            self._age = 0
 
     def set_height(self, height) -> None:
-        if (height >= 0):
-            self.height = height
-            print(f"Height updated: {height}cm")
+        if height >= 0:
+            self._height = height
+            print(f"Height updated: {self._height}cm")
         else:
             print(
                 "Error, height can't be negative",
@@ -22,33 +22,32 @@ class Plant:
             )
 
     def set_age(self, age) -> None:
-        if (age >= 0):
-            self.age = age
-            print(f"Age updated: {age} days")
+        if age >= 0:
+            self._age = age
+            print(f"Age updated: {self._age} days")
         else:
             print(
-                f"{self.name}: Error, age can't be negative"
+                f"{self._name}: Error, age can't be negative"
                 f"\nAge update rejected"
             )
 
     def get_height(self) -> int:
-        return self.height
+        return self._height
 
     def get_age(self) -> int:
-        return self.age
+        return self._age
 
-
-def show(plant) -> str:
-    return (
-        f"{plant.name}: {round(plant.height, 2)} cm, "
-        f"{plant.age} days old"
-    )
+    def show(self) -> str:
+        return (
+            f"{self._name}: {round(self._height, 2)} cm, "
+            f"{plant._age} days old"
+        )
 
 
 if __name__ == "__main__":
     print("=== Garden Security System ===")
     plant = Plant("Rose", 15.123987123, 10)
-    print(f"Plant created: {show(plant)}\n")
+    print(f"Plant created: {plant.show()}\n")
     plant.set_height(25)
     plant.set_age(30)
     print("\n")

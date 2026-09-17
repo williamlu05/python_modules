@@ -19,13 +19,13 @@ class Plant:
 
 def ft_plant_growth(plant) -> None:
     print("=== Garden Plant Growth ===")
-    show(plant)
+    plant.show()
     init_height = plant.height
     for i in range(1, 8):
         print(f"=== Day {i} ===")
         plant.grow()
         plant.age()
-        show(plant)
+        plant.show()
     growth = plant.height - init_height
     print(f"Growth this week: {round(growth, 2)}cm")
 
