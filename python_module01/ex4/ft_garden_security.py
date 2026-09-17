@@ -2,8 +2,14 @@
 class Plant:
     def __init__(self, name, height, age):
         self.name = name
-        self.set_height(height)
-        self.set_age(age)
+        self._height = height
+        if height < 0:
+            print("Error: Height cannot be negative")
+            self._height = 0.0
+        self._day = day
+        if day < 0:
+            print("Error: Age cannot be negative")
+            self._day = 0
 
     def set_height(self, height) -> None:
         if (height >= 0):
