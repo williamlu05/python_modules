@@ -4,9 +4,11 @@ class Plant:
         self.height = height
         self.age = age
 
-
-def show(plant) -> None:
-    print(plant.name + ":", plant.height, "cm,", plant.age, "days old")
+    def show(self) -> None:
+        print(
+            f"{self.name}: {round(self.height, 2)}cm, "
+            f"{self.age} days old"
+        )
 
 
 def ft_garden_data() -> None:
