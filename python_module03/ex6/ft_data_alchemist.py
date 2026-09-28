@@ -4,7 +4,7 @@ import random
 if __name__ == "__main__":
     print("=== Game Data Alchemist ===\n")
 
-    players = ['Alice', 'bob', 'Charlie', 'dylan',
+    players = ['Alice', 'bob', 'Charlie', 'dylan', 'McDonald',
                'Emma', 'Gregory', 'john', 'kevin', 'Liam']
     print(f"Initial list of players: {players}")
 
