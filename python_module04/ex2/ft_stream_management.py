@@ -4,48 +4,49 @@ from typing import IO
 
 def main() -> None:
     if len(sys.argv) != 2:
-        print("Usage: ft_ancient_text.py <file>")
+        print("[STDERR] Usage: ft_stream_management.py <file>",
+              file=sys.stderr)
         return
 
     print("=== Cyber Archives Recovery & Preservation ===")
-    file_name = sys.argv[1]
-    print(f"Accessing file '{file_name}'")
+    fname = sys.argv[1]
+    print(f"Accessing file '{fname}'")
     try:
-        file: IO[str] = open(file_name, 'r')
+        file: IO[str] = open(fname, 'r')
         print("---\n")
         file_content = file.read()
         print(file_content)
         print("---")
 
-        lines = file_content.split("\n")
         file.close()
-        print(f"File '{file_name}' closed.\n")
+        print(f"File '{fname}' closed.\n")
     except (OSError, UnicodeDecodeError) as e:
-        sys.stderr.write(f"[STDERR] Error opening file '{file_name}': {e}")
+        print(f"[STDERR] Error opening file '{fname}': {e}", file=sys.stderr)
         return
 
-    lines = [line + '#' for line in lines[:-1]]
-    lines.append("")
-    print("Tranform data:\n")
+    lines = [line + "#" for line in file_content.splitlines()]
+    print("Transform data:")
     print("---\n")
     for line in lines:
         print(line)
-    print("---")
-
-    file_name = 
-    if (file_name == ""):
+    print("\n---")
+    sys.stdout.write("Enter new file name (or empty): ")
+    sys.stdout.flush()
+    fname = sys.stdin.readline().rstrip()
+    if fname == "":
         print("Not saving data.")
         return
-    
+
     try:
-        file = open(file_name, 'x')
-        print(f"Saving data to '{file_name}'")
+        print(f"Saving data to '{fname}'")
+        file = open(fname, 'w')
         for line in lines:
             file.write(line + "\n")
-        print(f"Data saved in file '{file_name}'\n")
-    except (OSError, UnicodeDecodeError) as e:
-        sys.stderr.write(f"[STDERR] Error opening file '{file_name}': {e}")
-        print("Not saving data.")
+        print(f"Data saved in file '{fname}'\n")
+        file.close()
+    except OSError as e:
+        print(f"[STDERR] Error opening file '{fname}': {e}", file=sys.stderr)
+        print("Data not saved")
         return
 
 

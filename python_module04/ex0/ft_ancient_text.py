@@ -12,14 +12,14 @@ def main() -> None:
     print(f"Accessing file '{file_name}'")
     try:
         file: IO[str] = open(file_name, 'r')
-    except Exception as e:
+        print("---\n")
+        print(file.read())
+        print("---")
+        file.close()
+        print(f"File '{file_name}' closed.")
+    except (OSError, UnicodeDecodeError) as e:
         print(f"Error opening file '{file_name}': {e}")
         return
-    print("---\n")
-    print(file.read())
-    print("---")
-    file.close()
-    print(f"File '{file_name}' closed.")
 
 
 if __name__ == "__main__":

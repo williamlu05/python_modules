@@ -16,32 +16,34 @@ def main() -> None:
         file_content = file.read()
         print(file_content)
         print("---")
-
-        lines = file_content.split("\n")
         file.close()
         print(f"File '{file_name}' closed.\n")
     except (OSError, UnicodeDecodeError) as e:
         print(f"Error opening file '{file_name}': {e}")
         return
 
-    lines = [line + '#' for line in lines[:-1]]
-    lines.append("")
-    print("Tranform data:\n")
+    lines = [line + '#' for line in file_content.splitlines()]
+    print("Transform data:")
     print("---\n")
     for line in lines:
         print(line)
-    print("---")
-    file_name = input("Enter new file name (or empty): ")
-    if (file_name == ""):
-        print("Not saving data.")
-        return
+    print("\n---")
+
     try:
-        file = open(file_name, 'x')
+        file_name = input("Enter new file name (or empty): ")
+        if file_name == "":
+            print("Not saving data.")
+            return
         print(f"Saving data to '{file_name}'")
+        file = open(file_name, 'w')
         for line in lines:
             file.write(line + "\n")
         print(f"Data saved in file '{file_name}'\n")
-    except (OSError, UnicodeDecodeError) as e:
+        file.close()
+    except EOFError:
+        print("\nNot saving data.")
+        return
+    except OSError as e:
         print(f"Error opening file '{file_name}': {e}")
         return
 
