@@ -11,18 +11,20 @@ def main() -> None:
     print("=== Cyber Archives Recovery & Preservation ===")
     fname = sys.argv[1]
     print(f"Accessing file '{fname}'")
+    file: IO[str] | None = None
     try:
-        file: IO[str] = open(fname, 'r')
+        file = open(fname, 'r')
         print("---\n")
         file_content = file.read()
         print(file_content)
         print("---")
-
-        file.close()
-        print(f"File '{fname}' closed.\n")
     except (OSError, UnicodeDecodeError) as e:
         print(f"[STDERR] Error opening file '{fname}': {e}", file=sys.stderr)
         return
+    finally:
+        if file is not None:
+            file.close()
+            print(f"File '{fname}' closed.\n")
 
     lines = [line + "#" for line in file_content.splitlines()]
     print("Transform data:")

@@ -10,16 +10,19 @@ def main() -> None:
     print("=== Cyber Archives Recovery ===")
     file_name = sys.argv[1]
     print(f"Accessing file '{file_name}'")
+    file: IO[str] | None = None
     try:
-        file: IO[str] = open(file_name, 'r')
+        file = open(file_name, 'r')
         print("---\n")
         print(file.read())
         print("---")
-        file.close()
-        print(f"File '{file_name}' closed.")
     except (OSError, UnicodeDecodeError) as e:
         print(f"Error opening file '{file_name}': {e}")
         return
+    finally:
+        if file is not None:
+            file.close()
+            print(f"File '{file_name}' closed.")
 
 
 if __name__ == "__main__":

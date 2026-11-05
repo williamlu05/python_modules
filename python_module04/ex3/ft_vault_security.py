@@ -21,7 +21,7 @@ if __name__ == "__main__":
     print(secure_archive("hola"))
 
     print("\nUsing 'secure_archive' to read from an inaccessible file:")
-    print(secure_archive("/etc/master.passwd"))
+    print(secure_archive("/etc/shadow"))
 
     print("\nUsing 'secure_archive' to read from a regular file:")
     file_result = secure_archive("ancient_fragment.txt")
