@@ -4,7 +4,7 @@ from typing import IO
 
 def main() -> None:
     if len(sys.argv) != 2:
-        print("Usage: ft_ancient_text.py <file>")
+        print("Usage: ft_archive_creation.py <file>")
         return
 
     print("=== Cyber Archives Recovery & Preservation ===")

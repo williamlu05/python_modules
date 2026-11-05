@@ -26,8 +26,8 @@ class DataProcessor(ABC):
     def total(self) -> int:
         return self._total
 
-    def data(self) -> list[str]:
-        return self._elements
+    def length_data(self) -> int:
+        return len(self._elements)
 
 
 class NumericProcessor(DataProcessor):
@@ -161,13 +161,13 @@ class DataStream():
                 print(
                     f"{type(processor).__name__}:",
                     f"total {processor.total()} items processed,",
-                    f"remaining {len(processor.data())} on processor"
+                    f"remaining {processor.length_data()} on processor"
                 )
 
     def output_pipeline(self, nb: int, plugin: ExportPlugin) -> None:
         for processor in self._processors:
             data: list[tuple[int, str]] = []
-            while len(data) < nb and processor.data():
+            while len(data) < nb and processor.length_data() >= 1:
                 data.append(processor.output())
             plugin.process_output(data)
 

@@ -24,7 +24,7 @@ if __name__ == "__main__":
     print(secure_archive("/etc/master.passwd"))
 
     print("\nUsing 'secure_archive' to read from a regular file:")
-    file_result = secure_archive("ejemplo.txt")
+    file_result = secure_archive("ancient_fragment.txt")
     print(file_result)
 
     print("\nUsing 'secure_archive' to write previous content to a new file:")
