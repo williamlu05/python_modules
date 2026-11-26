@@ -1,0 +1,5 @@
+.env
+
+lab_env/
+.venv/
+__pycache__/
