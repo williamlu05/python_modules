@@ -20,7 +20,7 @@ def show_open_laboratory() -> None:
     print("source lab_env/bin/activate  # On Unix")
     print("lab_env\\Scripts\\activate     # On Windows")
     print()
-    print("Then run this program again.")
+    print("Then run this program again.\n")
     print("Reagent installation path:")
     for path in site.getsitepackages():
         if os.path.isdir(path):
