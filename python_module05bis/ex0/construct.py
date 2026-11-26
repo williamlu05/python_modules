@@ -21,6 +21,10 @@ def show_open_laboratory() -> None:
     print("lab_env\\Scripts\\activate     # On Windows")
     print()
     print("Then run this program again.")
+    print("Reagent installation path:")
+    for path in site.getsitepackages():
+        if os.path.isdir(path):
+            print(f"  {path}")
 
 
 def show_sealed_laboratory() -> None:
